@@ -1,8 +1,10 @@
-﻿from flask import Flask, abort
+﻿import os
+from flask import Flask, abort
 
 app = Flask(__name__)
 
 from supermarktconnector.ah import AHConnector
+
 
 @app.route('/barcode/<barcode>', methods=['GET'])
 def get_product(barcode):
