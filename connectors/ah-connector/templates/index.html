@@ -1,0 +1,41 @@
+﻿<html lang="en">
+<head>
+    <title>Products</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 4px 8px;
+            text-align: left;
+        }
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <tr>
+        {% for header in headers %}
+        <th><a href="?sort={{header.key}}&order={{header.order}}">{{header.title}}</a></th>
+        {% endfor %}
+    </tr>
+    {% for product in products %}
+    {% set barcode = product.barcode %}
+    {% set product = product.data %}
+    <tr>
+        <td><a href="/barcode/{{barcode}}">{{barcode}}</a></td>
+        <td>{{product.title}}</td>
+        {%if product.priceBeforeBonus %}
+        <td>€{{product.priceBeforeBonus}}</td>
+        {% else %}
+        <td>-</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+
+</html>
