@@ -13,7 +13,8 @@ def key_press(event):
     elif event.name == 'enter' and input and len(input) > 0:
         try:
             print('Scanned barcode:', input)
-            requests.get(apiEndpoint.format(input))
+            result = requests.get(apiEndpoint.format(input))
+            print('Result:', result.json())
         except Exception as e:
             print('Error sending request:', e)
         input = ''
