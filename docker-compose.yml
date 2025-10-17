@@ -21,8 +21,3 @@
       - PORT=5000
     ports:
       - '5000:5000'
-  input-listener:
-    build:
-      context: apps/input-listener
-    container_name: input-listener
-    command: sudo python3 listener.py
