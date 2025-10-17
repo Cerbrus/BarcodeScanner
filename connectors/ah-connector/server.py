@@ -11,7 +11,7 @@ def get_product(barcode):
     print('barcode:', barcode)
 
     connector = AHConnector()
-    connector.get_product_by_barcode(barcode)
+    return connector.get_product_by_barcode(barcode)
 
 
 if __name__ == "__main__":
