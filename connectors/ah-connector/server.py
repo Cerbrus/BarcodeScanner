@@ -12,7 +12,8 @@ def get_product(barcode):
 
     connector = AHConnector()
     product = connector.get_product_by_barcode(barcode)
-    return '' if product is None else product.to_json()
+    print(product)
+    return "test"
 
 
 if __name__ == "__main__":
