@@ -1,6 +1,4 @@
-﻿import os
-
-from flask import Flask
+﻿from flask import Flask, abort
 
 app = Flask(__name__)
 
@@ -11,9 +9,10 @@ def get_product(barcode):
     print('barcode:', barcode)
 
     connector = AHConnector()
-    product = connector.get_product_by_barcode(barcode)
-    print(product)
-    return "test"
+    try:
+        return connector.get_product_by_barcode(barcode)
+    except Exception:
+        abort(404)
 
 
 if __name__ == "__main__":
